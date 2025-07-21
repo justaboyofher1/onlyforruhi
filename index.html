@@ -1,140 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Ruhi 💗</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hey Ruhi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
-      font-family: 'Georgia', serif;
+      font-family: 'Raleway', sans-serif;
       background-color: #fff4e6;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-    }
-
-    #container {
       text-align: center;
-      padding: 20px;
-      animation: fadeIn 1.5s ease forwards;
-    }
+      padding: 30px;
+      margin: 0;
+      color: #3e2f28;
+    }h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
 
-    h1 {
-      font-size: 2rem;
-      color: #4a2c2a;
-      margin-bottom: 20px;
-    }
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
 
-    p {
-      font-size: 16px;
-      color: #3a2a26;
-      line-height: 1.6;
-    }
+.input-container {
+  margin-top: 50px;
+}
 
-    input {
-      padding: 10px;
-      font-size: 16px;
-      border: 2px solid #d4a373;
-      border-radius: 10px;
-      outline: none;
-      width: 200px;
-    }
+input[type="text"] {
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #cfae8e;
+  border-radius: 10px;
+  outline: none;
+  width: 250px;
+}
 
-    button {
-      background-color: #d4a373;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 10px 20px;
-      font-size: 16px;
-      margin: 10px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  background-color: #d1884f;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+}
 
-    button:hover {
-      background-color: #b86b3e;
-    }
+button:hover {
+  background-color: #b06b3b;
+}
 
-    #mainContent {
-      display: none;
-      animation: fadeIn 2s ease forwards;
-    }
+.hidden {
+  display: none;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+#mainContent {
+  animation: fadeIn 2s ease-in-out;
+}
 
-    .top-buttons {
-      margin-bottom: 30px;
-    }
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 
-    .top-buttons button {
-      margin: 0 10px;
-    }
+.top-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.top-buttons button {
+  width: 140px;
+}
+
   </style>
 </head>
 <body>
-  <div id="container">
-    <div id="lockScreen">
-      <h1>Hey beautiful 🌸<br>Enter the date we met 💬</h1>
-      <input type="text" id="password" placeholder="" />
-      <br>
-      <button onclick="checkPassword()">Unlock</button>
+  <div id="lockScreen">
+    <h1>Hey beautiful 🌸</h1>
+    <h2>Enter the date we met 💬</h2>
+    <div class="input-container">
+      <input type="text" id="dateInput" placeholder="">
+      <br />
+      <button onclick="unlockSite()">Unlock</button>
     </div>
+  </div>  <div id="mainContent" class="hidden">
+    <div class="top-buttons">
+      <button onclick="playMusic()">Play Music 🎶</button>
+      <button onclick="goToStory()">Our Story ❤️</button>
+    </div><h1>Hey Ruhi,</h1>
+<p>
+  If you are reading this, I've done what I told you. I'm doing this.<br>
+  This is what I've been doing for a long time and I think it's worth it — everything is worth it when it's with you.
+</p>
+<p>
+  So this is just for the introduction. You'll see a lot of things.
+</p>
+<p>
+  Right here, I just want to say…<br>
+  I love you and I’ve done it. Mwuah 💗
+</p>
 
-    <div id="mainContent">
-      <div class="top-buttons">
-        <button onclick="playMusic()">Play Music 🎶</button>
-        <button onclick="openStory()">Our Story ❤️</button>
-      </div>
-      <h1>Hey Ruhi,</h1>
-      <p>
-        If you're reading this, I've done what I told you. I'm doing this.<br>
-        This is what I've been doing for a long time and I think it's worth it —
-        everything is worth it when it's with you.
-      </p>
-      <p>
-        So this is just for the introduction. You'll see a lot of things.
-      </p>
-      <p>
-        Right here, I just want to say…<br>
-        I love you and I’ve done it. Mwuah 💗
-      </p>
-    </div>
-  </div>
-
-  <audio id="bgMusic" src="https://voca.ro/1k08e31Ryzy8" preload="auto"></audio>
-
-  <script>
-    const correctPassword = "17oct";
-
-    function checkPassword() {
-      const input = document.getElementById("password").value.toLowerCase().trim();
-      if (input === correctPassword) {
-        document.getElementById("lockScreen").style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
+  </div>  <audio id="bgMusic" preload="auto">
+    <source src="https://vocaroo.com/download/1k08e31Ryzy8" type="audio/mpeg">
+  </audio>  <script>
+    function unlockSite() {
+      const input = document.getElementById('dateInput').value.trim().toLowerCase();
+      if (input === '17oct') {
+        document.getElementById('lockScreen').classList.add('hidden');
+        document.getElementById('mainContent').classList.remove('hidden');
+        setTimeout(() => {
+          playMusic();
+        }, 500);
       } else {
-        alert("That’s not the right date 😢 Try again?");
+        alert("Oops! That's not the date we met. Try again.");
       }
     }
 
     function playMusic() {
-      const audio = document.getElementById("bgMusic");
-      audio.volume = 0.4;
-      audio.play().catch((err) => {
-        alert("Autoplay is blocked. Tap the button again!");
+      const music = document.getElementById('bgMusic');
+      music.play().catch(err => {
+        alert('Autoplay is blocked. Tap the button again!');
+        console.error(err);
       });
     }
 
-    function openStory() {
-      alert("This will lead to 'Our Story' page soon ✨ (under construction)");
-      // Later: window.location.href = "our-story.html";
+    function goToStory() {
+      alert("More story content coming soon! 💌");
     }
-  </script>
-</body>
+  </script></body>
 </html>
