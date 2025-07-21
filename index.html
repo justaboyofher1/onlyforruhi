@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Only for Ruhi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     html {
       scroll-behavior: smooth;
@@ -13,7 +14,7 @@
       margin: 0;
       padding: 0;
       background-color: #f3e6d0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
       color: #5b3a2b;
       display: flex;
       flex-direction: column;
@@ -26,8 +27,9 @@
 
     .main-text {
       padding: 20px;
-      font-size: 1.2rem;
-      max-width: 90%;
+      font-size: 1rem; /* Made smaller */
+      max-width: 700px;
+      line-height: 1.7;
     }
 
     .story-button {
@@ -119,7 +121,7 @@
     const textToType = `Hey Ruhi,\n\nIf you are reading this, I've done what I told you. I'm doing this. This is what I've been doing for a long time and I think it's worth it — everything is worth it when it's with you. So this is just for the introduction. You'll see a lot of things. Right here, I just want to say... I love you and I’ve done it. Mwuah 🫶`;
 
     let index = 0;
-    const speed = 30;
+    const speed = 60; // Slowed it down from 30 to 60ms per character
 
     function typeText() {
       const typedText = document.getElementById("typedText");
