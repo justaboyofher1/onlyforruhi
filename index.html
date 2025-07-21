@@ -21,14 +21,20 @@
   100% { opacity: 1; }
 }
 
+.top-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 .button {
-  margin: 10px;
-  padding: 12px 24px;
+  margin: 5px;
+  padding: 8px 16px;
   background-color: #e59b5a;
   border: none;
   border-radius: 12px;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
@@ -41,7 +47,7 @@
 h1 {
   font-size: 48px;
   color: #3c2b1e;
-  margin-bottom: 10px;
+  margin-top: 100px;
 }
 
 p {
@@ -52,22 +58,61 @@ p {
   line-height: 1.6;
 }
 
+#passwordSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+#content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
   </style>
 </head>
 <body>
-  <div>
-    <button class="button" onclick="playSong()">Play Music 🎶</button>
-    <button class="button" onclick="alert('Coming soon 😏')">Our Story ❤️</button>
-  </div>  <h1>Hey Ruhi,</h1>
-  <p>If you are reading this, I've done what I told you. I'm doing this.<br>
-    This is what I've been doing for a long time and I think it's worth it — everything is worth it when it’s with you.<br>
-    So this is just for the introduction. You'll see a lot of things.<br><br>
-    Right here, I just want to say...<br>
-    I love you and I’ve done it. Mwuah 💗
-  </p>  <audio id="myAudio">
+  <div id="passwordSection">
+    <h2>Hey beautiful 🌸<br>Enter the date we met 💬</h2>
+    <input type="text" id="passwordInput" placeholder="">
+    <button class="button" onclick="checkPassword()">Unlock</button>
+  </div>  <div id="content">
+    <div class="top-buttons">
+      <button class="button" onclick="playSong()">Play Music 🎶</button>
+      <button class="button" onclick="alert('Coming soon 😏')">Our Story ❤️</button>
+    </div><h1>Hey Ruhi,</h1>
+<p>If you are reading this, I've done what I told you. I'm doing this.<br>
+  This is what I've been doing for a long time and I think it's worth it — everything is worth it when it’s with you.<br>
+  So this is just for the introduction. You'll see a lot of things.<br><br>
+  Right here, I just want to say...<br>
+  I love you and I’ve done it. Mwuah 💗
+</p>
+
+  </div>  <audio id="myAudio">
     <source src="https://media.vocaroo.com/mp3/1k08e31Ryzy8" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>  <script>
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value.toLowerCase().trim();
+      if (input === "17oct") {
+        document.getElementById("passwordSection").style.display = "none";
+        document.getElementById("content").style.display = "flex";
+      } else {
+        alert("Wrong date, try again my love 💕");
+      }
+    }
+
     function playSong() {
       const audio = document.getElementById("myAudio");
       audio.play().catch((e) => {
