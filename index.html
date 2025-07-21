@@ -1,130 +1,126 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hey Ruhi ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Only for Ruhi 💗</title>
   <style>
     body {
       margin: 0;
       font-family: 'Georgia', serif;
-      background-color: #fdf1dd;
-      color: #4d3b2f;
-      text-align: center;
-      transition: opacity 1s ease;
-    }
-    #gate {
-      position: fixed;
-      inset: 0;
-      background: #fef7ea;
+      background-color: #fff4e6;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      z-index: 10;
+      align-items: center;
+      height: 100vh;
+      transition: background 1s ease;
     }
-    #gate h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    #gate input {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
+
+    #container {
       text-align: center;
+      padding: 2rem;
     }
-    #gate button {
-      margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
-      background-color: #d8945d;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      padding: 1rem;
-    }
-    .btn {
-      padding: 0.6rem 1.2rem;
-      background-color: #d8945d;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      font-weight: bold;
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
-    main {
-      padding: 1.5rem;
-    }
+
     h1 {
-      font-size: 3rem;
+      font-size: 2rem;
+      color: #4a2c2a;
     }
-    audio {
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #d4a373;
+      border-radius: 10px;
+      outline: none;
+      width: 200px;
+    }
+
+    button {
+      background-color: #d4a373;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #c37b42;
+    }
+
+    #mainContent {
       display: none;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div id="gate">
-    <h2>Hey beautiful 🌸<br />Enter the date we met 💬</h2>
-    <input type="text" id="passcode" placeholder="e.g., 17oct" />
-    <button onclick="checkPass()">Unlock</button>
-  </div><audio id="bgMusic" src="https://www.youtube.com/watch?v=CsHiG-43Fzg" type="audio/mpeg"></audio>
+  <div id="container">
+    <div id="lockScreen">
+      <h1>Hey beautiful 🌸<br>Enter the date we met <span>💬</span></h1>
+      <input type="text" id="password" placeholder="" />
+      <br>
+      <button onclick="checkPassword()">Unlock</button>
+    </div>
 
-  <header>
-    <button class="btn" onclick="playMusic()">Play Music 🎶</button>
-    <button class="btn">Our Story ❤️</button>
-  </header>  <main>
-    <h1>Hey Ruhi,</h1>
-    <p>
-      If you are reading this, I've done what I told you. I'm doing this.<br />
-      This is what I've been doing for a long time and I think it's worth it —
-      everything is worth it when it's with you.
-    </p>
-    <p>
-      So this is just for the introduction. You'll see a lot of things.
-    </p>
-    <p>
-      Right here, I just want to say...<br />
-      I love you and I’ve done it. Mwuah 💗
-    </p>
-  </main>  <script>
-    const gate = document.getElementById('gate');
-    const music = document.getElementById('bgMusic');
+    <div id="mainContent">
+      <h1>Hey Ruhi,</h1>
+      <p>
+        If you're reading this, I've done what I told you. I'm doing this.
+        This is what I've been doing for a long time and I think it's worth it —
+        everything is worth it when it's with you.
+      </p>
+      <p>
+        So this is just for the introduction.<br>
+        You'll see a lot of things.
+      </p>
+      <p>
+        Right here, I just want to say...<br>
+        I love you and I’ve done it. Mwuah 💗
+      </p>
+    </div>
+  </div>
 
-    function checkPass() {
-      const val = document.getElementById('passcode').value.trim().toLowerCase();
-      if (val === '17oct') {
-        gate.style.display = 'none';
-        fadeInMusic();
+  <!-- Audio element -->
+  <audio id="bgMusic" src="https://voca.ro/1k08e31Ryzy8" preload="auto"></audio>
+
+  <script>
+    const correctPassword = "17oct";
+
+    function checkPassword() {
+      const input = document.getElementById("password").value.toLowerCase().trim();
+      if (input === correctPassword) {
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+
+        // Auto-play music with fade-in
+        const audio = document.getElementById("bgMusic");
+        audio.volume = 0;
+        audio.play().then(() => {
+          let volume = 0;
+          const fadeIn = setInterval(() => {
+            if (volume < 0.4) {
+              volume += 0.02;
+              audio.volume = volume;
+            } else {
+              clearInterval(fadeIn);
+            }
+          }, 200);
+        }).catch((e) => {
+          console.log("Autoplay blocked 😩: ", e);
+        });
       } else {
-        alert('Nope, try again my cutu 💬');
+        alert("Oops! Try again, lovebug. 🐞");
       }
     }
-
-    function fadeInMusic() {
-      music.volume = 0;
-      music.play();
-      let vol = 0;
-      const fade = setInterval(() => {
-        if (vol < 0.4) {
-          vol += 0.02;
-          music.volume = vol;
-        } else {
-          clearInterval(fade);
-        }
-      }, 200);
-    }
-
-    function playMusic() {
-      music.volume = 0.4;
-      music.play();
-    }
-  </script></body>
+  </script>
+</body>
 </html>
