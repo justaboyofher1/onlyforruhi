@@ -47,15 +47,15 @@
 
     .story-button, .music-button {
       position: fixed;
-      top: 14px;
-      padding: 8px 14px;
-      font-size: 0.95rem;
+      top: 12px;
+      padding: 6px 12px;
+      font-size: 0.85rem;
       font-weight: bold;
       color: white;
       background-color: #d99f6a;
       border: none;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       z-index: 999;
@@ -67,11 +67,11 @@
     }
 
     .story-button {
-      right: 15px;
+      right: 12px;
     }
 
     .music-button {
-      left: 15px;
+      left: 12px;
     }
   </style>
 </head>
@@ -89,7 +89,7 @@
 
   <!-- Music Player -->
   <audio id="bgMusic" preload="auto">
-    <source src="https://dl.sndup.net/6z6r/HeadOverHeels.mp3" type="audio/mpeg">
+    <source src="https://files.catbox.moe/v8s94o.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
@@ -107,31 +107,31 @@
       if (musicPlaying) {
         music.pause();
         btn.textContent = "Play Music 🎶";
-        music.volume = 0.4; // reset volume
         clearInterval(fadeInterval);
       } else {
         music.volume = 0.01;
-        music.play();
-        btn.textContent = "Pause Music 🔇";
-
-        fadeInterval = setInterval(() => {
-          if (music.volume < 0.4) {
-            music.volume = Math.min(music.volume + 0.01, 0.4);
-          } else {
-            clearInterval(fadeInterval);
-          }
-        }, 200); // every 200ms it gets louder
+        music.play().then(() => {
+          fadeInterval = setInterval(() => {
+            if (music.volume < 0.4) {
+              music.volume = Math.min(music.volume + 0.01, 0.4);
+            } else {
+              clearInterval(fadeInterval);
+            }
+          }, 200);
+          btn.textContent = "Pause Music 🔇";
+          musicPlaying = true;
+        }).catch(() => {
+          console.warn("Autoplay blocked. Tap to play.");
+        });
       }
       musicPlaying = !musicPlaying;
     }
 
-    // Try autoplay with fade when page loads
+    // Autoplay music on load (desktop only; mobile blocks this)
     window.addEventListener("load", () => {
-      const userInteracted = typeof window.orientation !== "undefined"; // quick check for mobile
-      if (!userInteracted) return; // mobile browsers block autoplay w/o interaction
-
-      setTimeout(() => {
-        try {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (!isMobile) {
+        setTimeout(() => {
           music.volume = 0.01;
           music.play().then(() => {
             fadeInterval = setInterval(() => {
@@ -143,12 +143,11 @@
             }, 200);
             btn.textContent = "Pause Music 🔇";
             musicPlaying = true;
+          }).catch(() => {
+            btn.textContent = "Play Music 🎶";
           });
-        } catch (err) {
-          // autoplay probably blocked
-          btn.textContent = "Play Music 🎶";
-        }
-      }, 800); // slight delay after page load
+        }, 800);
+      }
     });
   </script>
 </body>
