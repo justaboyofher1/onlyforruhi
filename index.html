@@ -1,154 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For Ruhi ❤️</title>
+  <title>Hey Ruhi ❤️</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
-
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Libre Baskerville', serif;
-      background-color: #fdf1d4;
-      color: #4a2d22;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 80px 20px;
+      font-family: 'Georgia', serif;
+      background-color: #fdf1dd;
+      color: #4d3b2f;
       text-align: center;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1.2s ease forwards;
-      animation-delay: 0.3s;
+      transition: opacity 1s ease;
     }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .story-button, .music-button {
+    #gate {
       position: fixed;
-      top: 12px;
-      padding: 6px 12px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      color: white;
-      background-color: #d99f6a;
-      border: none;
+      inset: 0;
+      background: #fef7ea;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    #gate h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    #gate input {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      font-size: 1rem;
+      text-align: center;
+    }
+    #gate button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #d8945d;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      z-index: 999;
     }
-
-    .story-button:hover, .music-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    header {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
     }
-
-    .story-button {
-      right: 12px;
+    .btn {
+      padding: 0.6rem 1.2rem;
+      background-color: #d8945d;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
     }
-
-    .music-button {
-      left: 12px;
+    main {
+      padding: 1.5rem;
+    }
+    h1 {
+      font-size: 3rem;
+    }
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
+  <div id="gate">
+    <h2>Hey beautiful 🌸<br />Enter the date we met 💬</h2>
+    <input type="text" id="passcode" placeholder="e.g., 17oct" />
+    <button onclick="checkPass()">Unlock</button>
+  </div><audio id="bgMusic" src="https://www.youtube.com/watch?v=CsHiG-43Fzg" type="audio/mpeg"></audio>
 
-  <button class="music-button" onclick="toggleMusic()">Play Music 🎶</button>
-  <button class="story-button" onclick="goToStory()">Our Story ❤️</button>
+  <header>
+    <button class="btn" onclick="playMusic()">Play Music 🎶</button>
+    <button class="btn">Our Story ❤️</button>
+  </header>  <main>
+    <h1>Hey Ruhi,</h1>
+    <p>
+      If you are reading this, I've done what I told you. I'm doing this.<br />
+      This is what I've been doing for a long time and I think it's worth it —
+      everything is worth it when it's with you.
+    </p>
+    <p>
+      So this is just for the introduction. You'll see a lot of things.
+    </p>
+    <p>
+      Right here, I just want to say...<br />
+      I love you and I’ve done it. Mwuah 💗
+    </p>
+  </main>  <script>
+    const gate = document.getElementById('gate');
+    const music = document.getElementById('bgMusic');
 
-  <div class="container">
-    <h1><strong>Hey Ruhi,</strong></h1>
-    <p>If you are reading this, I've done what I told you. I'm doing this. This is what I've been doing for a long time and I think it's worth it — everything is worth it when it's with you.</p>
-    <p>So this is just for the introduction. You'll see a lot of things.</p>
-    <p>Right here, I just want to say…<br />I love you and I’ve done it. Mwuah 🤍</p>
-  </div>
-
-  <!-- Music Player -->
-  <audio id="bgMusic" preload="auto">
-    <source src="https://files.catbox.moe/v8s94o.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <script>
-    function goToStory() {
-      alert("This will take you to our story when it's ready! 💖");
-    }
-
-    const music = document.getElementById("bgMusic");
-    const btn = document.querySelector(".music-button");
-    let musicPlaying = false;
-    let fadeInterval = null;
-
-    function toggleMusic() {
-      if (musicPlaying) {
-        music.pause();
-        btn.textContent = "Play Music 🎶";
-        clearInterval(fadeInterval);
+    function checkPass() {
+      const val = document.getElementById('passcode').value.trim().toLowerCase();
+      if (val === '17oct') {
+        gate.style.display = 'none';
+        fadeInMusic();
       } else {
-        music.volume = 0.01;
-        music.play().then(() => {
-          fadeInterval = setInterval(() => {
-            if (music.volume < 0.4) {
-              music.volume = Math.min(music.volume + 0.01, 0.4);
-            } else {
-              clearInterval(fadeInterval);
-            }
-          }, 200);
-          btn.textContent = "Pause Music 🔇";
-          musicPlaying = true;
-        }).catch(() => {
-          console.warn("Autoplay blocked. Tap to play.");
-        });
+        alert('Nope, try again my cutu 💬');
       }
-      musicPlaying = !musicPlaying;
     }
 
-    // Autoplay music on load (desktop only; mobile blocks this)
-    window.addEventListener("load", () => {
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      if (!isMobile) {
-        setTimeout(() => {
-          music.volume = 0.01;
-          music.play().then(() => {
-            fadeInterval = setInterval(() => {
-              if (music.volume < 0.4) {
-                music.volume = Math.min(music.volume + 0.01, 0.4);
-              } else {
-                clearInterval(fadeInterval);
-              }
-            }, 200);
-            btn.textContent = "Pause Music 🔇";
-            musicPlaying = true;
-          }).catch(() => {
-            btn.textContent = "Play Music 🎶";
-          });
-        }, 800);
-      }
-    });
-  </script>
-</body>
+    function fadeInMusic() {
+      music.volume = 0;
+      music.play();
+      let vol = 0;
+      const fade = setInterval(() => {
+        if (vol < 0.4) {
+          vol += 0.02;
+          music.volume = vol;
+        } else {
+          clearInterval(fade);
+        }
+      }, 200);
+    }
+
+    function playMusic() {
+      music.volume = 0.4;
+      music.play();
+    }
+  </script></body>
 </html>
