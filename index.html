@@ -1,12 +1,93 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
-<title>Only for Ruhi</title>
-<link rel='stylesheet' href='style.css'>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Only for Ruhi</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f3e6d0; /* creamy brown */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #5b3a2b; /* warm brown for text */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }.main-text {
+  padding: 20px;
+  font-size: 1.2rem;
+  max-width: 90%;
+}
+
+.story-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #d4a373;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.story-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fefae0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: left;
+  font-size: 1rem;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.story-content {
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+  </style>
 </head>
-<body>
-<h1>Hi Ruhi,</h1>
-<p>This is a placeholder for your homepage message.</p>
-<script src='script.js'></script>
-</body>
+<body><button class="story-button" onclick="showStory()">📖 Our Story</button>
+
+  <div class="main-text">
+    <h2>Hey Ruhi,</h2>
+    <p>If you are reading this, I've done what I told you. I'm doing this. This is what I've been doing for a long time and I think it's worth it — everything is worth it when it's with you. So this is just for the introduction. You'll see a lot of things. Right here, I just want to say... I love you and I’ve done it.<br />
+    Mwuah 🫶</p>
+  </div>  <div class="story-overlay" id="story">
+    <div class="close-btn" onclick="closeStory()">&times;</div>
+    <div class="story-content" id="story-content">
+      <!-- Your story paragraph will go here -->
+      <p>Loading your story...</p>
+    </div>
+  </div>  <script>
+    function showStory() {
+      document.getElementById('story').style.display = 'flex';
+    }
+
+    function closeStory() {
+      document.getElementById('story').style.display = 'none';
+    }
+  </script></body>
 </html>
