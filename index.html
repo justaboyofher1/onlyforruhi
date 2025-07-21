@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Only for Ruhi 💗</title>
+  <title>For Ruhi 💗</title>
   <style>
     body {
       margin: 0;
@@ -13,17 +13,25 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      transition: background 1s ease;
+      flex-direction: column;
     }
 
     #container {
       text-align: center;
-      padding: 2rem;
+      padding: 20px;
+      animation: fadeIn 1.5s ease forwards;
     }
 
     h1 {
       font-size: 2rem;
       color: #4a2c2a;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #3a2a26;
+      line-height: 1.6;
     }
 
     input {
@@ -42,54 +50,64 @@
       border-radius: 12px;
       padding: 10px 20px;
       font-size: 16px;
-      margin-top: 1rem;
+      margin: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
     }
 
     button:hover {
-      background-color: #c37b42;
+      background-color: #b86b3e;
     }
 
     #mainContent {
       display: none;
-      animation: fadeIn 2s ease-in-out forwards;
+      animation: fadeIn 2s ease forwards;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    .top-buttons {
+      margin-bottom: 30px;
+    }
+
+    .top-buttons button {
+      margin: 0 10px;
     }
   </style>
 </head>
 <body>
   <div id="container">
     <div id="lockScreen">
-      <h1>Hey beautiful 🌸<br>Enter the date we met <span>💬</span></h1>
+      <h1>Hey beautiful 🌸<br>Enter the date we met 💬</h1>
       <input type="text" id="password" placeholder="" />
       <br>
       <button onclick="checkPassword()">Unlock</button>
     </div>
 
     <div id="mainContent">
+      <div class="top-buttons">
+        <button onclick="playMusic()">Play Music 🎶</button>
+        <button onclick="openStory()">Our Story ❤️</button>
+      </div>
       <h1>Hey Ruhi,</h1>
       <p>
-        If you're reading this, I've done what I told you. I'm doing this.
+        If you're reading this, I've done what I told you. I'm doing this.<br>
         This is what I've been doing for a long time and I think it's worth it —
         everything is worth it when it's with you.
       </p>
       <p>
-        So this is just for the introduction.<br>
-        You'll see a lot of things.
+        So this is just for the introduction. You'll see a lot of things.
       </p>
       <p>
-        Right here, I just want to say...<br>
+        Right here, I just want to say…<br>
         I love you and I’ve done it. Mwuah 💗
       </p>
     </div>
   </div>
 
-  <!-- Audio element -->
   <audio id="bgMusic" src="https://voca.ro/1k08e31Ryzy8" preload="auto"></audio>
 
   <script>
@@ -100,26 +118,22 @@
       if (input === correctPassword) {
         document.getElementById("lockScreen").style.display = "none";
         document.getElementById("mainContent").style.display = "block";
-
-        // Auto-play music with fade-in
-        const audio = document.getElementById("bgMusic");
-        audio.volume = 0;
-        audio.play().then(() => {
-          let volume = 0;
-          const fadeIn = setInterval(() => {
-            if (volume < 0.4) {
-              volume += 0.02;
-              audio.volume = volume;
-            } else {
-              clearInterval(fadeIn);
-            }
-          }, 200);
-        }).catch((e) => {
-          console.log("Autoplay blocked 😩: ", e);
-        });
       } else {
-        alert("Oops! Try again, lovebug. 🐞");
+        alert("That’s not the right date 😢 Try again?");
       }
+    }
+
+    function playMusic() {
+      const audio = document.getElementById("bgMusic");
+      audio.volume = 0.4;
+      audio.play().catch((err) => {
+        alert("Autoplay is blocked. Tap the button again!");
+      });
+    }
+
+    function openStory() {
+      alert("This will lead to 'Our Story' page soon ✨ (under construction)");
+      // Later: window.location.href = "our-story.html";
     }
   </script>
 </body>
