@@ -1,1 +1,1 @@
-// JS for countdown or music will go here
+// External JavaScript placeholder
