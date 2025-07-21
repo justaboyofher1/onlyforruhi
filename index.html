@@ -2,44 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hey Ruhi ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Ruhi ❤️</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
     body {
       margin: 0;
-      font-family: 'Georgia', serif;
-      background-color: #fefae0;
-      color: #5c4033;
+      padding: 0;
+      font-family: 'Libre Baskerville', serif;
+      background-color: #fdf1d4;
+      color: #4a2d22;
       overflow-x: hidden;
     }
 
     .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 80px 20px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: 0.3s;
-}
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.2s ease forwards;
+      animation-delay: 0.3s;
+    }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
     h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      font-weight: bold;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
     }
 
     p {
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 1.1rem;
+      line-height: 1.8;
       margin-bottom: 20px;
     }
 
@@ -47,104 +49,39 @@
       position: fixed;
       top: 20px;
       right: 20px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      font-family: 'Georgia', serif;
-      background-color: #d4a373;
+      background-color: #d99f6a;
       color: white;
+      font-weight: bold;
       border: none;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      padding: 12px 20px;
+      font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 99;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .story-button:hover {
       transform: scale(1.05);
-      background-color: #c2875f;
-    }
-
-    .story-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fefae0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      text-align: left;
-      font-size: 1rem;
-      overflow-y: auto;
-      z-index: 10;
-      opacity: 0;
-      transform: translateY(40px);
-      pointer-events: none;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .story-overlay.active {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: all;
-    }
-
-    .story-content {
-      max-width: 700px;
-      margin: auto;
-    }
-
-    .close-button {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 1.5rem;
-      color: #fff;
-      background: none;
-      border: none;
-      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
     }
   </style>
 </head>
 <body>
-
-  <button class="story-button" onclick="showStory()">Our Story ❤️</button>
+  <button class="story-button" onclick="goToStory()">Our Story ❤️</button>
 
   <div class="container">
-    <h1>Hey Ruhi,</h1>
-    <p>
-      If you are reading this, I've done what I told you. I'm doing this. This is what I've been doing for a long time and I think it's worth it — everything is worth it when it's with you.
-    </p>
-    <p>
-      So this is just for the introduction. You'll see a lot of things.<br/>
-      Right here, I just want to say…<br/>
-      I love you and I’ve done it. Mwuah 🤍
-    </p>
-  </div>
-
-  <div class="story-overlay" id="story">
-    <button class="close-button" onclick="hideOverlay()">✕</button>
-    <div class="story-content">
-      <h2>Our Story Begins...</h2>
-      <p>
-        (This is where your story will go once you write it. For now, it’s your blank canvas.)
-      </p>
-    </div>
+    <h1><strong>Hey Ruhi,</strong></h1>
+    <p>If you are reading this, I've done what I told you. I'm doing this. This is what I've been doing for a long time and I think it's worth it — everything is worth it when it's with you.</p>
+    <p>So this is just for the introduction. You'll see a lot of things.</p>
+    <p>Right here, I just want to say…<br />I love you and I’ve done it. Mwuah 🤍</p>
   </div>
 
   <script>
-    function showStory() {
-      document.getElementById('story').classList.add('active');
-    }
-
-    function hideOverlay() {
-      document.getElementById('story').classList.remove('active');
+    function goToStory() {
+      // You can link this to another HTML page later
+      alert("This will take you to our story when it's ready! 💖");
     }
   </script>
-
 </body>
 </html>
