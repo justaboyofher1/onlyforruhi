@@ -45,29 +45,39 @@
       margin-bottom: 20px;
     }
 
-    .story-button {
+    .story-button, .music-button {
       position: fixed;
       top: 20px;
-      right: 20px;
-      background-color: #d99f6a;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 12px;
       padding: 12px 20px;
       font-size: 1rem;
-      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      background-color: #d99f6a;
+      border: none;
+      border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 999;
     }
 
-    .story-button:hover {
+    .story-button:hover, .music-button:hover {
       transform: scale(1.05);
       box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    .story-button {
+      right: 20px;
+    }
+
+    .music-button {
+      left: 20px;
     }
   </style>
 </head>
 <body>
+
+  <button class="music-button" onclick="toggleMusic()">Play Music 🎶</button>
   <button class="story-button" onclick="goToStory()">Our Story ❤️</button>
 
   <div class="container">
@@ -77,10 +87,29 @@
     <p>Right here, I just want to say…<br />I love you and I’ve done it. Mwuah 🤍</p>
   </div>
 
+  <!-- Music Element -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <script>
     function goToStory() {
-      // You can link this to another HTML page later
       alert("This will take you to our story when it's ready! 💖");
+    }
+
+    let musicPlaying = false;
+    function toggleMusic() {
+      const music = document.getElementById("bgMusic");
+      const btn = document.querySelector(".music-button");
+      if (musicPlaying) {
+        music.pause();
+        btn.textContent = "Play Music 🎶";
+      } else {
+        music.play();
+        btn.textContent = "Pause Music 🔇";
+      }
+      musicPlaying = !musicPlaying;
     }
   </script>
 </body>
