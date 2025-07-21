@@ -1,135 +1,79 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hey Ruhi</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Ruhi ❤️</title>
   <style>
     body {
-      font-family: 'Raleway', sans-serif;
-      background-color: #fff4e6;
-      text-align: center;
-      padding: 30px;
+      font-family: 'Georgia', serif;
+      background-color: #fdf1e0;
       margin: 0;
-      color: #3e2f28;
-    }h1 {
-  font-size: 3rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.button {
+  margin: 10px;
+  padding: 12px 24px;
+  background-color: #e59b5a;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #d88643;
+}
+
+h1 {
+  font-size: 48px;
+  color: #3c2b1e;
   margin-bottom: 10px;
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 18px;
+  color: #4a3b31;
+  max-width: 700px;
+  margin: 10px 0;
   line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.input-container {
-  margin-top: 50px;
-}
-
-input[type="text"] {
-  padding: 12px;
-  font-size: 1rem;
-  border: 2px solid #cfae8e;
-  border-radius: 10px;
-  outline: none;
-  width: 250px;
-}
-
-button {
-  padding: 12px 25px;
-  font-size: 1rem;
-  border: none;
-  background-color: #d1884f;
-  color: white;
-  border-radius: 12px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-button:hover {
-  background-color: #b06b3b;
-}
-
-.hidden {
-  display: none;
-}
-
-#mainContent {
-  animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-.top-buttons {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 30px;
-}
-
-.top-buttons button {
-  width: 140px;
 }
 
   </style>
 </head>
 <body>
-  <div id="lockScreen">
-    <h1>Hey beautiful 🌸</h1>
-    <h2>Enter the date we met 💬</h2>
-    <div class="input-container">
-      <input type="text" id="dateInput" placeholder="">
-      <br />
-      <button onclick="unlockSite()">Unlock</button>
-    </div>
-  </div>  <div id="mainContent" class="hidden">
-    <div class="top-buttons">
-      <button onclick="playMusic()">Play Music 🎶</button>
-      <button onclick="goToStory()">Our Story ❤️</button>
-    </div><h1>Hey Ruhi,</h1>
-<p>
-  If you are reading this, I've done what I told you. I'm doing this.<br>
-  This is what I've been doing for a long time and I think it's worth it — everything is worth it when it's with you.
-</p>
-<p>
-  So this is just for the introduction. You'll see a lot of things.
-</p>
-<p>
-  Right here, I just want to say…<br>
-  I love you and I’ve done it. Mwuah 💗
-</p>
-
-  </div>  <audio id="bgMusic" preload="auto">
-    <source src="https://vocaroo.com/download/1k08e31Ryzy8" type="audio/mpeg">
+  <div>
+    <button class="button" onclick="playSong()">Play Music 🎶</button>
+    <button class="button" onclick="alert('Coming soon 😏')">Our Story ❤️</button>
+  </div>  <h1>Hey Ruhi,</h1>
+  <p>If you are reading this, I've done what I told you. I'm doing this.<br>
+    This is what I've been doing for a long time and I think it's worth it — everything is worth it when it’s with you.<br>
+    So this is just for the introduction. You'll see a lot of things.<br><br>
+    Right here, I just want to say...<br>
+    I love you and I’ve done it. Mwuah 💗
+  </p>  <audio id="myAudio">
+    <source src="https://media.vocaroo.com/mp3/1k08e31Ryzy8" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>  <script>
-    function unlockSite() {
-      const input = document.getElementById('dateInput').value.trim().toLowerCase();
-      if (input === '17oct') {
-        document.getElementById('lockScreen').classList.add('hidden');
-        document.getElementById('mainContent').classList.remove('hidden');
-        setTimeout(() => {
-          playMusic();
-        }, 500);
-      } else {
-        alert("Oops! That's not the date we met. Try again.");
-      }
-    }
-
-    function playMusic() {
-      const music = document.getElementById('bgMusic');
-      music.play().catch(err => {
-        alert('Autoplay is blocked. Tap the button again!');
-        console.error(err);
+    function playSong() {
+      const audio = document.getElementById("myAudio");
+      audio.play().catch((e) => {
+        alert("Something went wrong while playing. Try again maybe?");
+        console.error(e);
       });
-    }
-
-    function goToStory() {
-      alert("More story content coming soon! 💌");
     }
   </script></body>
 </html>
