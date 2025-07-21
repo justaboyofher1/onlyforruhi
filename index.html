@@ -2,123 +2,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Ruhi ❤️</title>
+  <title>For Ruhi 💖</title>
   <style>
     body {
-      font-family: 'Georgia', serif;
-      background-color: #fdf1e0;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      background-color: #fff6ec;
+      font-family: 'Georgia', serif;
       text-align: center;
-      animation: fadeIn 2s ease-in-out;
-    }@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-.top-buttons {
+      color: #3a2c24;
+      overflow-x: hidden;
+    }#musicBtn, #storyBtn {
   position: absolute;
   top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #df874f;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#musicBtn:hover, #storyBtn:hover {
+  background-color: #e99763;
+}
+
+#musicBtn {
+  left: 20px;
+}
+
+#storyBtn {
   right: 20px;
 }
 
-.button {
-  margin: 5px;
-  padding: 8px 16px;
-  background-color: #e59b5a;
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: #d88643;
+.content {
+  max-width: 90%;
+  margin: 150px auto 0;
+  font-size: 18px;
+  line-height: 1.6;
+  padding: 0 16px;
 }
 
 h1 {
-  font-size: 48px;
-  color: #3c2b1e;
-  margin-top: 100px;
+  font-size: 42px;
+  margin-bottom: 20px;
 }
 
-p {
-  font-size: 18px;
-  color: #4a3b31;
-  max-width: 700px;
-  margin: 10px 0;
-  line-height: 1.6;
-}
-
-#passwordSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 150px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  font-size: 16px;
-  text-align: center;
-}
-
-#content {
+#audioControls {
   display: none;
-  flex-direction: column;
-  align-items: center;
 }
 
   </style>
 </head>
 <body>
-  <div id="passwordSection">
-    <h2>Hey beautiful 🌸<br>Enter the date we met 💬</h2>
-    <input type="text" id="passwordInput" placeholder="">
-    <button class="button" onclick="checkPassword()">Unlock</button>
-  </div>  <div id="content">
-    <div class="top-buttons">
-      <button class="button" onclick="playSong()">Play Music 🎶</button>
-      <button class="button" onclick="alert('Coming soon 😏')">Our Story ❤️</button>
-    </div><h1>Hey Ruhi,</h1>
-<p>If you are reading this, I've done what I told you. I'm doing this.<br>
-  This is what I've been doing for a long time and I think it's worth it — everything is worth it when it’s with you.<br>
-  So this is just for the introduction. You'll see a lot of things.<br><br>
-  Right here, I just want to say...<br>
-  I love you and I’ve done it. Mwuah 💗
-</p>
-
-  </div>  <audio id="myAudio">
-    <source src="https://media.vocaroo.com/mp3/1k08e31Ryzy8" type="audio/mpeg">
+  <button id="musicBtn">Play Music 🎶</button>
+  <button id="storyBtn">Our Story ❤️</button>  <div class="content">
+    <h1>Hey Ruhi,</h1>
+    <p>If you are reading this, I've done what I told you. I'm doing this.<br>
+    This is what I've been doing for a long time and I think it's worth it — everything is worth it when it’s with you.<br>
+    So this is just for the introduction. You'll see a lot of things.</p>
+    <p style="margin-top: 20px;">Right here, I just want to say...<br>
+    I love you and I’ve done it. Mwuah 💗</p>
+  </div>  <audio id="backgroundMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>  <script>
-    function checkPassword() {
-      const input = document.getElementById("passwordInput").value.toLowerCase().trim();
-      if (input === "17oct") {
-        document.getElementById("passwordSection").style.display = "none";
-        document.getElementById("content").style.display = "flex";
-      } else {
-        alert("Wrong date, try again my love 💕");
-      }
-    }
+    const musicBtn = document.getElementById('musicBtn');
+    const music = document.getElementById('backgroundMusic');
+    let isPlaying = false;
 
-    function playSong() {
-      const audio = document.getElementById("myAudio");
-      audio.play().catch((e) => {
-        alert("Something went wrong while playing. Try again maybe?");
-        console.error(e);
-      });
-    }
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        musicBtn.textContent = 'Play Music 🎶';
+      } else {
+        music.play();
+        musicBtn.textContent = 'Pause Music ⏸️';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    document.getElementById('storyBtn').addEventListener('click', () => {
+      alert('The story section is coming soon!');
+    });
   </script></body>
 </html>
