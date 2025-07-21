@@ -5,18 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Only for Ruhi</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      background-color: #f3e6d0; /* creamy brown */
+      background-color: #f3e6d0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #5b3a2b; /* warm brown for text */
+      color: #5b3a2b;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
       text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
     }
 
     .main-text {
@@ -37,6 +42,12 @@
       font-weight: bold;
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .story-button:hover {
+      transform: scale(1.05);
+      background-color: #c08b61;
     }
 
     .story-overlay {
@@ -55,6 +66,15 @@
       font-size: 1rem;
       overflow-y: auto;
       z-index: 10;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .story-overlay.active {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
     }
 
     .story-content {
@@ -69,6 +89,15 @@
       font-size: 2rem;
       cursor: pointer;
     }
+
+    h2, p {
+      transition: all 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -76,25 +105,44 @@
   <button class="story-button" onclick="showStory()">Our Story</button>
 
   <div class="main-text">
-    <h2>Hey Ruhi,</h2>
-    <p>If you are reading this, I've done what I told you. I'm doing this. This is what I've been doing for a long time and I think it's worth it — everything is worth it when it's with you. So this is just for the introduction. You'll see a lot of things. Right here, I just want to say... I love you and I’ve done it.<br />Mwuah 🫶</p>
+    <h2 id="typedText"></h2>
   </div>
 
-  <div class="story-overlay" id="story">
-    <div class="close-btn" onclick="closeStory()">&times;</div>
+  <div class="story-overlay" id="story" onclick="closeStory(event)">
+    <div class="close-btn" onclick="hideOverlay()">&times;</div>
     <div class="story-content" id="story-content">
-      <!-- Your story paragraph will go here -->
       <p>Loading your story...</p>
     </div>
   </div>
 
   <script>
+    const textToType = `Hey Ruhi,\n\nIf you are reading this, I've done what I told you. I'm doing this. This is what I've been doing for a long time and I think it's worth it — everything is worth it when it's with you. So this is just for the introduction. You'll see a lot of things. Right here, I just want to say... I love you and I’ve done it. Mwuah 🫶`;
+
+    let index = 0;
+    const speed = 30;
+
+    function typeText() {
+      const typedText = document.getElementById("typedText");
+      if (index < textToType.length) {
+        typedText.innerHTML += textToType.charAt(index) === "\n" ? "<br/>" : textToType.charAt(index);
+        index++;
+        setTimeout(typeText, speed);
+      }
+    }
+    window.onload = typeText;
+
     function showStory() {
-      document.getElementById('story').style.display = 'flex';
+      document.getElementById('story').classList.add('active');
     }
 
-    function closeStory() {
-      document.getElementById('story').style.display = 'none';
+    function hideOverlay() {
+      document.getElementById('story').classList.remove('active');
+    }
+
+    function closeStory(event) {
+      if (event.target.id === 'story') {
+        hideOverlay();
+      }
     }
   </script>
 
