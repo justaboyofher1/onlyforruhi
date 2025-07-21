@@ -2,57 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Only for Ruhi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hey Ruhi ❤️</title>
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      padding: 0;
-      background-color: #f3e6d0;
-      font-family: 'Playfair Display', serif;
-      color: #5b3a2b;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      font-family: 'Georgia', serif;
+      background-color: #fefae0;
+      color: #5c4033;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 80px 20px;
       text-align: center;
     }
 
-    .main-text {
-      padding: 20px;
-      font-size: 0.95rem; /* Smaller */
-      max-width: 650px;
-      line-height: 1.75;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 2.5s ease-out forwards;
-      animation-delay: 0.8s;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
     }
 
     .story-button {
-      position: absolute;
+      position: fixed;
       top: 20px;
       right: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-family: 'Georgia', serif;
       background-color: #d4a373;
-      color: #fff;
+      color: white;
       border: none;
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-weight: bold;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease-in-out;
+      transition: all 0.3s ease;
+      z-index: 99;
     }
 
     .story-button:hover {
       transform: scale(1.05);
-      background-color: #c08b61;
+      background-color: #c2875f;
     }
 
     .story-overlay {
@@ -63,71 +62,66 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.8);
       color: #fefae0;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 40px 20px;
       text-align: left;
-      font-size: 0.95rem;
+      font-size: 1rem;
       overflow-y: auto;
       z-index: 10;
       opacity: 0;
+      transform: translateY(40px);
       pointer-events: none;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .story-overlay.active {
-      display: flex;
       opacity: 1;
+      transform: translateY(0);
       pointer-events: all;
     }
 
     .story-content {
       max-width: 700px;
-      line-height: 1.6;
+      margin: auto;
     }
 
-    .close-btn {
+    .close-button {
       position: absolute;
       top: 20px;
-      right: 20px;
-      font-size: 2rem;
+      left: 20px;
+      font-size: 1.5rem;
+      color: #fff;
+      background: none;
+      border: none;
       cursor: pointer;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
   </style>
 </head>
 <body>
 
-  <button class="story-button" onclick="showStory()">Our Story</button>
+  <button class="story-button" onclick="showStory()">Our Story ❤️</button>
 
-  <div class="main-text">
-    <h2>Hey Ruhi,</h2>
+  <div class="container">
+    <h1>Hey Ruhi,</h1>
     <p>
-      If you are reading this, I've done what I told you.<br>
-      I'm doing this. This is what I've been doing for a long time and I think it's worth it — everything is worth it when it's with you.<br><br>
-      So this is just for the introduction. You'll see a lot of things.<br>
-      Right here, I just want to say...<br>
-      I love you and I’ve done it. Mwuah 🫶
+      If you are reading this, I've done what I told you. I'm doing this. This is what I've been doing for a long time and I think it's worth it — everything is worth it when it's with you.
+    </p>
+    <p>
+      So this is just for the introduction. You'll see a lot of things.<br/>
+      Right here, I just want to say…<br/>
+      I love you and I’ve done it. Mwuah 🤍
     </p>
   </div>
 
-  <div class="story-overlay" id="story" onclick="closeStory(event)">
-    <div class="close-btn" onclick="hideOverlay()">&times;</div>
-    <div class="story-content" id="story-content">
-      <p>Loading your story...</p>
+  <div class="story-overlay" id="story">
+    <button class="close-button" onclick="hideOverlay()">✕</button>
+    <div class="story-content">
+      <h2>Our Story Begins...</h2>
+      <p>
+        (This is where your story will go once you write it. For now, it’s your blank canvas.)
+      </p>
     </div>
   </div>
 
@@ -138,12 +132,6 @@
 
     function hideOverlay() {
       document.getElementById('story').classList.remove('active');
-    }
-
-    function closeStory(event) {
-      if (event.target.id === 'story') {
-        hideOverlay();
-      }
     }
   </script>
 
