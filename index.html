@@ -47,15 +47,15 @@
 
     .story-button, .music-button {
       position: fixed;
-      top: 20px;
-      padding: 12px 20px;
-      font-size: 1rem;
+      top: 14px;
+      padding: 8px 14px;
+      font-size: 0.95rem;
       font-weight: bold;
       color: white;
       background-color: #d99f6a;
       border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       z-index: 999;
@@ -63,15 +63,15 @@
 
     .story-button:hover, .music-button:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
     }
 
     .story-button {
-      right: 20px;
+      right: 15px;
     }
 
     .music-button {
-      left: 20px;
+      left: 15px;
     }
   </style>
 </head>
@@ -87,9 +87,9 @@
     <p>Right here, I just want to say…<br />I love you and I’ve done it. Mwuah 🤍</p>
   </div>
 
-  <!-- Music Element -->
-  <audio id="bgMusic" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  <!-- Music Player -->
+  <audio id="bgMusic" preload="auto">
+    <source src="https://dl.sndup.net/6z6r/HeadOverHeels.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
@@ -98,19 +98,58 @@
       alert("This will take you to our story when it's ready! 💖");
     }
 
+    const music = document.getElementById("bgMusic");
+    const btn = document.querySelector(".music-button");
     let musicPlaying = false;
+    let fadeInterval = null;
+
     function toggleMusic() {
-      const music = document.getElementById("bgMusic");
-      const btn = document.querySelector(".music-button");
       if (musicPlaying) {
         music.pause();
         btn.textContent = "Play Music 🎶";
+        music.volume = 0.4; // reset volume
+        clearInterval(fadeInterval);
       } else {
+        music.volume = 0.01;
         music.play();
         btn.textContent = "Pause Music 🔇";
+
+        fadeInterval = setInterval(() => {
+          if (music.volume < 0.4) {
+            music.volume = Math.min(music.volume + 0.01, 0.4);
+          } else {
+            clearInterval(fadeInterval);
+          }
+        }, 200); // every 200ms it gets louder
       }
       musicPlaying = !musicPlaying;
     }
+
+    // Try autoplay with fade when page loads
+    window.addEventListener("load", () => {
+      const userInteracted = typeof window.orientation !== "undefined"; // quick check for mobile
+      if (!userInteracted) return; // mobile browsers block autoplay w/o interaction
+
+      setTimeout(() => {
+        try {
+          music.volume = 0.01;
+          music.play().then(() => {
+            fadeInterval = setInterval(() => {
+              if (music.volume < 0.4) {
+                music.volume = Math.min(music.volume + 0.01, 0.4);
+              } else {
+                clearInterval(fadeInterval);
+              }
+            }, 200);
+            btn.textContent = "Pause Music 🔇";
+            musicPlaying = true;
+          });
+        } catch (err) {
+          // autoplay probably blocked
+          btn.textContent = "Play Music 🎶";
+        }
+      }, 800); // slight delay after page load
+    });
   </script>
 </body>
 </html>
