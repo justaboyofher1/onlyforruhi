@@ -13,3 +13,15 @@ btn.addEventListener("click", () => {
     isPlaying = false;
   }
 });
+function unlock() {
+  const input = document.getElementById("passwordInput").value;
+  const correctPassword = "2911"; // Change this if your date changes
+  const errorMsg = document.getElementById("errorMsg");
+
+  if (input === correctPassword) {
+    document.getElementById("lockscreen").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+  } else {
+    errorMsg.style.display = "block";
+  }
+}
