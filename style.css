@@ -1,3 +1,4 @@
+/* Base styling */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -24,8 +25,59 @@ header {
   color: #5e3b3b;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   animation: fadeInTop 1.2s ease;
+  transition: all 0.2s ease-in-out;
 }
 
+.top-left:hover, .top-right:hover {
+  background-color: #ff9bb3;
+  transform: scale(1.05);
+}
+
+/* Lock screen styling */
+#lockScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#unlockCode {
+  padding: 10px 15px;
+  border: 2px solid #ffb6c1;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 10px;
+  background-color: #fff0f5;
+  color: #5e3b3b;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#unlockCode::placeholder {
+  color: #c88;
+  opacity: 0.8;
+}
+
+#lockScreen button {
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #ffb6c1;
+  border: none;
+  border-radius: 10px;
+  color: #5e3b3b;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+#lockScreen button:hover {
+  background-color: #ff9bb3;
+  transform: scale(1.05);
+}
+
+/* Main content */
 h1 {
   font-size: 2.4rem;
   margin-bottom: 1rem;
@@ -43,6 +95,7 @@ p {
   margin-top: 1rem;
 }
 
+/* Heart animation */
 .heart-section {
   margin-top: 2rem;
   animation: fadeIn 2s ease-in;
@@ -60,6 +113,7 @@ p {
   margin-top: 0.5rem;
 }
 
+/* Video modal */
 #videoContainer {
   position: fixed;
   top: 0;
@@ -72,6 +126,13 @@ p {
   justify-content: center;
   flex-direction: column;
   z-index: 999;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+#videoContainer.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 #videoContainer video {
@@ -90,8 +151,28 @@ p {
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
+/* Confetti */
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: pink;
+  top: 0;
+  animation: fall linear forwards;
+  z-index: 1000;
+  border-radius: 50%;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+/* Hidden utility */
 .hidden {
   display: none;
 }
@@ -110,4 +191,23 @@ p {
 @keyframes fadeInTop {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .sparkle-heart {
+    font-size: 2rem;
+  }
+
+  #videoContainer video {
+    width: 95%;
+  }
 }
