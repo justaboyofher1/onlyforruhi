@@ -1,30 +1,46 @@
-document.getElementById("password-form").addEventListener("submit", function (e) {
-  e.preventDefault(); // prevent form from reloading the page
-
-  const correctPassword = "1710";
-  const userPassword = document.getElementById("password").value;
-
-  if (userPassword === correctPassword) {
-    document.getElementById("lock-screen").style.display = "none";
-    document.getElementById("main-content").style.display = "block";
+function toggleSong() {
+  const song = document.getElementById("bgMusic");
+  if (song.paused) {
+    song.play();
   } else {
-    document.getElementById("error-msg").style.display = "block";
+    song.pause();
   }
-});
+}
 
-// Music toggle
-const music = document.getElementById("music");
-const musicToggleBtn = document.getElementById("music-toggle");
-let isPlaying = false;
+function showVideo() {
+  confettiRain();
+  document.getElementById("videoContainer").classList.remove("hidden");
+  const video = document.getElementById("ruhiVideo");
+  video.currentTime = 0;
+  video.play();
+}
 
-musicToggleBtn.addEventListener("click", () => {
-  if (!isPlaying) {
-    music.play();
-    musicToggleBtn.textContent = "⏸️ Pause Song";
-    isPlaying = true;
+function hideVideo() {
+  const video = document.getElementById("ruhiVideo");
+  video.pause();
+  video.currentTime = 0;
+  document.getElementById("videoContainer").classList.add("hidden");
+}
+
+function confettiRain() {
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.animationDuration = 2 + Math.random() * 3 + "s";
+    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 70%)`;
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 5000);
+  }
+}
+
+// Lock screen
+function checkCode() {
+  const input = document.getElementById("unlockCode").value;
+  if (input === "2911") {
+    document.getElementById("lockScreen").style.display = "none";
+    document.getElementById("mainContent").classList.remove("hidden");
   } else {
-    music.pause();
-    musicToggleBtn.textContent = "▶️ Play Song";
-    isPlaying = false;
+    alert("Wrong code! Try again 💔");
   }
-});
+}
