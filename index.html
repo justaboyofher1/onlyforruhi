@@ -1,15 +1,33 @@
-<div id="lockscreen" style="position: absolute; top: 0; left: 0; background-color: #ffd6e8; width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 999;">
-  <h2 style="color: #5a3e36;">Enter Our Special Date 💖</h2>
-  <input type="password" id="passwordInput" placeholder="DDMM" style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;">
-  <button onclick="unlock()" style="margin-top: 10px; background-color: #ff8db2; color: white; border: none; padding: 10px 20px; border-radius: 12px;">Unlock 💌</button>
-  <p id="errorMsg" style="color: red; margin-top: 10px; display: none;">Wrong date, try again 😢</p>
-</div>
-
-<div id="mainContent" style="display: none;">
-  <div class="top-buttons">
-    <button onclick="alert('Our Story coming soon!')">❤️ Our Story</button>
-    <button id="musicBtn">▶️ Play Song</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Only For Ruhi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="lock-screen">
+    <h2>Enter Our Special Date 💖</h2>
+    <form id="password-form">
+      <input type="password" id="password" placeholder="DDMM" />
+      <button type="submit">Unlock 💌</button>
+    </form>
+    <p id="error-msg" style="color: red; display: none;">Wrong date, baby 😔</p>
   </div>
 
-  <h1>Only For Ruhi ❤️</h1>
-</div>
+  <div id="main-content" style="display: none;">
+    <div class="top-bar">
+      <button id="our-story">💖 Our Story</button>
+      <button id="music-toggle">▶️ Play Song</button>
+    </div>
+    <div class="letter">
+      <h1>Hey Ruhi,</h1>
+      <p>This is something just for you... 🥺💗</p>
+    </div>
+    <audio id="music" src="Tears For Fears - Head Over Heels_256k.mp3"></audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
