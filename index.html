@@ -1,173 +1,52 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For Ruhi 💖</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #fbd4e7;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #5b3a29;
-      text-align: center;
-      overflow-x: hidden;
-    }.top-buttons {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 12px;
-  background-color: #fca4d8;
-  color: #000;
-  font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  transform: scale(1.05);
-  background-color: #ff80c7;
-}
-
-h1 {
-  margin-top: 20px;
-  font-size: 36px;
-  animation: fadeInDown 1s ease;
-}
-
-p {
-  max-width: 90%;
-  margin: 0 auto;
-  margin-top: 10px;
-  font-size: 18px;
-  animation: fadeInUp 1.5s ease;
-}
-
-@keyframes fadeInDown {
-  0% { opacity: 0; transform: translateY(-30px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-.heart-section {
-  margin-top: 50px;
-  cursor: pointer;
-}
-
-#confetti-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 5;
-}
-
-#video-container {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
-
-#video-container video {
-  max-width: 90%;
-  max-height: 80vh;
-  border-radius: 12px;
-}
-
-#close-video {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-  z-index: 11;
-}
-
-.arrow {
-  width: 50px;
-  margin: 5px auto;
-}
-
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hey Ruhi 💘</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="top-buttons">
-    <button onclick="location.href='our-story.html'">💖 Our Story</button>
-    <button onclick="toggleMusic()" id="music-button">▶️ Play Song</button>
-  </div>  <h1>Hey Ruhi,</h1>
-  <p>
-    If you are reading this, I've done what I've told you. I'm doing this — this is
-    what I've been doing for a long time and I think it's worth it. Everything is
-    worth it when it's with you. So this is just for the introduction. You will see
-    a lot of things. So right here I just want to say — I love you and I've done it.
-  </p>
-  <p style="margin-top: 10px; font-size: 22px;">Mwuah 🫶</p>  <div class="heart-section" onclick="revealSurprise()">
-    <div style="font-size: 36px;">💖</div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Curved_arrow.svg/1200px-Curved_arrow.svg.png" class="arrow" />
-    <div style="font-size: 16px;">Touch Here</div>
-  </div><canvas id="confetti-canvas"></canvas>
+  <div id="lockScreen">
+    <input type="password" id="unlockCode" placeholder="Enter the date we met 💌"/>
+    <button onclick="checkCode()">Unlock</button>
+  </div>
 
-  <div id="video-container">
-    <div id="close-video" onclick="closeVideo()">&times;</div>
-    <video id="specialVideo" controls autoplay>
-      <source src="VID-20250722-WA0000(1).mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>  <audio id="bg-music" loop>
-    <source src="Tears For Fears - Head Over Heels_256k.mp3" type="audio/mpeg">
-  </audio>  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>  <script>
-    let musicPlaying = false;
-    const music = document.getElementById("bg-music");
+  <div id="mainContent" class="hidden">
+    <header>
+      <button class="top-left">💖 Our Story</button>
+      <button class="top-right" onclick="toggleSong()">▶️ Play Song</button>
+    </header>
 
-    function toggleMusic() {
-      if (musicPlaying) {
-        music.pause();
-        document.getElementById("music-button").innerText = "▶️ Play Song";
-      } else {
-        music.play();
-        document.getElementById("music-button").innerText = "⏸️ Pause Song";
-      }
-      musicPlaying = !musicPlaying;
-    }
+    <main>
+      <h1>Hey Ruhi,</h1>
+      <p>
+        If you are reading this, I've done what I've told you. I'm doing this — this is
+        what I've been doing for a long time and I think it's worth it. Everything is
+        worth it when it's with you. So this is just for the introduction. You will see a
+        lot of things. So right here I just want to say — I love you and I’ve done it.
+      </p>
+      <p class="center">Mwuah 🤗</p>
 
-    function revealSurprise() {
-      confetti({
-        particleCount: 200,
-        spread: 100,
-        origin: { y: 0.6 },
-      });
+      <div class="heart-section">
+        <span class="sparkle-heart" onclick="showVideo()">💖</span>
+        <p class="arrow-text">↖️ touch here</p>
+      </div>
 
-      document.getElementById("video-container").style.display = "flex";
-      document.getElementById("specialVideo").play();
-    }
+      <div id="videoContainer" class="hidden">
+        <button class="close-btn" onclick="hideVideo()">✖</button>
+        <video id="ruhiVideo" autoplay controls>
+          <source src="VID-20250722-WA0000(1).mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </main>
 
-    function closeVideo() {
-      const container = document.getElementById("video-container");
-      const vid = document.getElementById("specialVideo");
-      vid.pause();
-      vid.currentTime = 0;
-      container.style.display = "none";
-    }
-  </script></body>
+    <audio id="bgMusic" loop>
+      <source src="Tears For Fears - Head Over Heels_256k.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
