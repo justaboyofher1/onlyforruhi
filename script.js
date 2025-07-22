@@ -15,7 +15,7 @@ btn.addEventListener("click", () => {
 });
 function unlock() {
   const input = document.getElementById("passwordInput").value;
-  const correctPassword = "2911"; // Change this if your date changes
+  const correctPassword = "1710";
   const errorMsg = document.getElementById("errorMsg");
 
   if (input === correctPassword) {
