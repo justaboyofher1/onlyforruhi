@@ -14,7 +14,7 @@
 
   <div id="mainContent" class="hidden">
     <header>
-      <button class="top-left">💖 Our Story</button>
+      <button class="top-left" onclick="showStory()">💖 Our Story</button>
       <button class="top-right" onclick="toggleSong()">▶️ Play Song</button>
     </header>
 
@@ -35,10 +35,45 @@
 
       <div id="videoContainer" class="hidden">
         <button class="close-btn" onclick="hideVideo()">✖</button>
-        <video id="ruhiVideo" controls>
+        <video id="ruhiVideo" controls autoplay>
           <source src="VID-20250722-WA0000(1).mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+      </div>
+
+      <div id="storyPanel" class="hidden story-panel">
+        <button class="close-btn" onclick="hideStory()">✖</button>
+        <div class="story-content">
+          <h2>Our Story 💌</h2>
+          <p>
+            So we met on a random afternoon in October — on the 17th to be precise (even though I texted her a day before, she replied a day late... spoiler: this happens a lot 😭).
+            I saw her in a group chat where I was famous for using the word “genuine” so often, they literally named me “genuine.” 
+            I thought she was old based on her PFP (spoiler: it wasn’t even her 😭) and assumed she wouldn’t talk to me. But then she posted a reel — and I replied to it with:
+            <br><br>
+            “Genuine (The sexual tension between me and the gun is unbeatable).”
+            <br><br>
+            And the next day... SHE REPLIED. Her first message to me, and I quote:
+            <br>
+            <strong>“ek aur baar genuine likha toh gand maar dungi.”</strong>
+            <br>
+            (Translation: If you say ‘genuine’ one more time, I’ll f*ck you in the ass 😭)
+            <br><br>
+            Bold start? YES.
+            <br><br>
+            And that’s how it began. Fast forward — we talked night and day, non-stop. One time I replied late and she said, “So you can breathe but not reply?” I never replied late again 💀.
+            <br><br>
+            There’s more — she sent me a giant letter on my birthday. No one’s ever done that for me. It was so good, I still have it and I’ll keep it forever.
+            Then she moved to Russia (yes — my girlfriend is a damn DOCTOR 🤯). 
+            I moved to Italy.
+            We fought. We laughed. We… well… jerked off. But we never left.
+            <br><br>
+            We were supposed to meet this year — but life had other plans. So I built this. For her. For us.
+            <br><br>
+            I may not be rich or brilliant like Ruhi is. But I can love her like a freak. Obsessively. Endlessly. With everything I’ve got.
+            <br><br>
+            <strong>YE TEBYA LYUBLYU 🫶</strong>
+          </p>
+        </div>
       </div>
     </main>
 
