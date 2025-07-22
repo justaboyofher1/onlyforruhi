@@ -1,31 +1,49 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Georgia', serif;
   background-color: #111;
   color: #fff;
-  display: flex;
   height: 100vh;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in;
 }
 
-.container {
-  text-align: center;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.top-buttons {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 18px;
+  background-color: #ff147a;
   border: none;
-  border-radius: 10px;
-  background: #ff4b91;
+  border-radius: 12px;
+  padding: 8px 16px;
   color: white;
+  font-size: 14px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background: #ff1c68;
+  background-color: #d01065;
+}
+
+h1 {
+  font-size: 26px;
+  line-height: 1.5;
+  max-width: 90%;
 }
