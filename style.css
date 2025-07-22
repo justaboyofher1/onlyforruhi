@@ -1,61 +1,31 @@
 body {
+  background-color: #fcd6e5; /* baby pink */
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
   margin: 0;
   padding: 0;
-  font-family: 'Georgia', serif;
-  background-color: #ffd6e8;
-  color: #5a3e36;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  animation: fadeInPage 1.2s ease-in;
 }
 
-@keyframes fadeInPage {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+#lock-screen {
+  margin-top: 20%;
 }
 
-.top-buttons {
-  position: absolute;
-  top: 20px;
-  width: 100%;
+input, button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin: 5px;
+}
+
+.top-bar {
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
-}
-
-button {
-  background-color: #ff8db2;
-  border: none;
-  border-radius: 12px;
   padding: 10px 20px;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInButton 1s ease forwards;
-  animation-delay: 1s;
-  transition: transform 0.3s ease;
 }
 
-button:hover {
-  transform: scale(1.05);
-}
-
-@keyframes fadeInButton {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-h1 {
-  font-size: 26px;
-  line-height: 1.5;
-  max-width: 90%;
-  animation: fadeInPage 1.4s ease-in;
+.letter {
+  padding: 30px;
+  max-width: 600px;
+  margin: auto;
+  font-size: 1.1em;
 }
