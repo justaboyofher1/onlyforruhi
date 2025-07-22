@@ -1,19 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Only For Ruhi</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>Only For Ruhi ❤️</h1>
-    <button id="music-btn">▶️ Play Song</button>
-  </div>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Ruhi 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }.container {
+  text-align: center;
+  padding: 20px;
+  animation: fadeIn 2s ease;
+  max-width: 90%;
+}
 
-  <audio id="ruhiMusic" src="Tears For Fears - Head Over Heels_256k.mp3"></audio>
+h1 {
+  font-size: 2em;
+  color: #c71585;
+  margin-bottom: 20px;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+p {
+  font-size: 1.2em;
+  color: #333;
+  line-height: 1.6;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #c71585;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.9em;
+}
+
+.nav-btn:hover {
+  background-color: #a0136a;
+}
+
+#music-btn {
+  left: 20px;
+}
+
+#story-btn {
+  right: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  </style>
+</head><body>
+  <button id="music-btn" class="nav-btn" onclick="toggleMusic()">🎵 Play Music</button>
+  <button id="story-btn" class="nav-btn" onclick="alert('Our Story coming soon...')">📖 Our Story ❤️</button>  <div class="container">
+    <h1>Hey Ruhi 💌</h1>
+    <p>
+      This little page is just the beginning. Everything here is made with love, from scratch, to capture our story.
+      <br /><br />
+      There will be poems, songs, memories, and surprises that are just for you. We’ve only just begun.
+      <br /><br />
+      Yours forever,<br />
+      Akash
+    </p>
+  </div><audio id="bg-music" src="Tears For Fears - Head Over Heels_256k.mp3"></audio>
+
+  <script>
+    let isPlaying = false;
+    const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("music-btn");
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        musicBtn.innerText = "🎵 Play Music";
+      } else {
+        music.play();
+        musicBtn.innerText = "⏸ Pause Music";
+      }
+      isPlaying = !isPlaying;
+    }
+  </script></body></html>
