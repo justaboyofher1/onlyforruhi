@@ -1,31 +1,113 @@
 body {
-  background-color: #fcd6e5; /* baby pink */
-  font-family: 'Courier New', Courier, monospace;
-  text-align: center;
   margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffcce0;
+  color: #5e3b3b;
+  text-align: center;
+  padding: 2rem;
 }
 
-#lock-screen {
-  margin-top: 20%;
-}
-
-input, button {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  margin: 5px;
-}
-
-.top-bar {
+header {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  margin-bottom: 2rem;
 }
 
-.letter {
-  padding: 30px;
+.top-left, .top-right {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #ffb6c1;
+  color: #5e3b3b;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  animation: fadeInTop 1.2s ease;
+}
+
+h1 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  margin: 1rem auto;
   max-width: 600px;
-  margin: auto;
-  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.center {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+
+.heart-section {
+  margin-top: 2rem;
+  animation: fadeIn 2s ease-in;
+}
+
+.sparkle-heart {
+  font-size: 2.5rem;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+.arrow-text {
+  font-size: 1rem;
+  color: #5e3b3b;
+  margin-top: 0.5rem;
+}
+
+#videoContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 204, 229, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 999;
+}
+
+#videoContainer video {
+  width: 90%;
+  max-width: 500px;
+  border-radius: 20px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: #fff;
+  border: none;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInTop {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
