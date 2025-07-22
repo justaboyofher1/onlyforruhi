@@ -9,17 +9,19 @@ function toggleSong() {
 
 function showVideo() {
   confettiRain();
-  document.getElementById("videoContainer").classList.remove("hidden");
+  const videoContainer = document.getElementById("videoContainer");
   const video = document.getElementById("ruhiVideo");
+  videoContainer.classList.remove("hidden");
   video.currentTime = 0;
   video.play();
 }
 
 function hideVideo() {
+  const videoContainer = document.getElementById("videoContainer");
   const video = document.getElementById("ruhiVideo");
   video.pause();
   video.currentTime = 0;
-  document.getElementById("videoContainer").classList.add("hidden");
+  videoContainer.classList.add("hidden");
 }
 
 function confettiRain() {
@@ -34,13 +36,12 @@ function confettiRain() {
   }
 }
 
-// Lock screen
 function checkCode() {
   const input = document.getElementById("unlockCode").value;
-  if (input === "2911") {
+  if (input === "1710") {
     document.getElementById("lockScreen").style.display = "none";
     document.getElementById("mainContent").classList.remove("hidden");
   } else {
-    alert("Wrong code! Try again 💔");
+    alert("Wrong code! Try the date we met again 🥲");
   }
 }
