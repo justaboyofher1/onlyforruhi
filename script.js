@@ -45,3 +45,13 @@ function checkCode() {
     alert("Wrong code! Try the date we met again 🥲");
   }
 }
+
+function showStory() {
+  const storyPanel = document.getElementById("storyPanel");
+  storyPanel.classList.remove("hidden");
+}
+
+function hideStory() {
+  const storyPanel = document.getElementById("storyPanel");
+  storyPanel.classList.add("hidden");
+}
