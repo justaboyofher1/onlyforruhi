@@ -1,27 +1,30 @@
-const btn = document.getElementById("music-btn");
-const music = document.getElementById("ruhiMusic");
+document.getElementById("password-form").addEventListener("submit", function (e) {
+  e.preventDefault(); // prevent form from reloading the page
+
+  const correctPassword = "1710";
+  const userPassword = document.getElementById("password").value;
+
+  if (userPassword === correctPassword) {
+    document.getElementById("lock-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+  } else {
+    document.getElementById("error-msg").style.display = "block";
+  }
+});
+
+// Music toggle
+const music = document.getElementById("music");
+const musicToggleBtn = document.getElementById("music-toggle");
 let isPlaying = false;
 
-btn.addEventListener("click", () => {
+musicToggleBtn.addEventListener("click", () => {
   if (!isPlaying) {
     music.play();
-    btn.textContent = "⏸️ Pause Song";
+    musicToggleBtn.textContent = "⏸️ Pause Song";
     isPlaying = true;
   } else {
     music.pause();
-    btn.textContent = "▶️ Play Song";
+    musicToggleBtn.textContent = "▶️ Play Song";
     isPlaying = false;
   }
 });
-function unlock() {
-  const input = document.getElementById("passwordInput").value;
-  const correctPassword = "1710";
-  const errorMsg = document.getElementById("errorMsg");
-
-  if (input === correctPassword) {
-    document.getElementById("lockscreen").style.display = "none";
-    document.getElementById("mainContent").style.display = "block";
-  } else {
-    errorMsg.style.display = "block";
-  }
-}
