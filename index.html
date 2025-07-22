@@ -1,115 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Ruhi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hey Ruhi</title>
   <style>
     body {
+      background-color: #fdf1de;
+      font-family: 'Georgia', serif;
       margin: 0;
       padding: 0;
-      background-color: #fff5e6;
-      font-family: 'Georgia', serif;
-      color: #3c2f2f;
       text-align: center;
-      overflow-x: hidden;
-    }
+    }.top-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 
-    .top-buttons {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px;
-    }
+.button {
+  background-color: #e38b34;
+  border: none;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-    button {
-      background-color: #e48a3a;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      transition: background-color 0.3s ease;
-    }
+.button:hover {
+  transform: scale(1.05);
+}
 
-    button:hover {
-      background-color: #d27b2f;
-    }
+.container {
+  padding: 100px 20px 40px;
+}
 
-    .content {
-      max-width: 600px;
-      margin: 60px auto 0;
-      padding: 0 20px;
-      animation: fadeIn 1s ease;
-    }
+h1 {
+  font-size: 36px;
+  margin-bottom: 24px;
+  color: #3b2f2f;
+}
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
+p {
+  max-width: 600px;
+  margin: 12px auto;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #4c3f3f;
+}
 
-    p {
-      font-size: 18px;
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
+.ending {
+  font-weight: bold;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 <body>
-
   <div class="top-buttons">
-    <button onclick="toggleMusic()" id="musicBtn">Play Music 🎶</button>
-    <button onclick="goToStory()">Our Story ❤️</button>
-  </div>
-
-  <div class="content">
+    <button class="button" onclick="toggleMusic()" id="musicBtn">Play Music 🎶</button>
+    <button class="button" onclick="window.location.href='ourstory.html'">Our Story ❤️</button>
+  </div>  <div class="container">
     <h1>Hey Ruhi,</h1>
     <p>If you are reading this, I've done what I told you. I'm doing this.</p>
     <p>This is what I've been doing for a long time and I think it's worth it — everything is worth it when it’s with you.</p>
     <p>So this is just for the introduction. You'll see a lot of things.</p>
-    <p><strong>Right here, I just want to say…<br>
-    I love you and I’ve done it. Mwuah 💗</strong></p>
-  </div>
+    <p class="ending">Right here, I just want to say...<br />
+    I love you and I’ve done it. Mwuah 💗</p>
+  </div><audio id="bg-music" src="https://cdn.jsdelivr.net/gh/miraculousmishu/musicplayer@main/17oct.mp3"></audio>
 
-  <!-- Hidden password protection -->
   <script>
-    const correctPassword = "17oct";
-
-    if (!sessionStorage.getItem("authenticated")) {
-      const input = prompt("Enter the secret code:");
-      if (input !== correctPassword) {
-        alert("Wrong code. Try again later.");
-        window.location.href = "https://google.com"; // or exit
-      } else {
-        sessionStorage.setItem("authenticated", "true");
-      }
-    }
-
-    function goToStory() {
-      alert("Coming soon! 💌");
-    }
-
-    // Music controls
-    let audio = new Audio("music.mp3");
-    let isPlaying = false;
+    const audio = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('musicBtn');
 
     function toggleMusic() {
-      if (!isPlaying) {
+      if (audio.paused) {
         audio.play();
-        document.getElementById("musicBtn").innerText = "Pause Music ⏸️";
+        musicBtn.innerText = 'Pause Music ⏸️';
       } else {
         audio.pause();
-        document.getElementById("musicBtn").innerText = "Play Music 🎶";
+        musicBtn.innerText = 'Play Music 🎶';
       }
-      isPlaying = !isPlaying;
     }
-  </script>
-
-</body>
+  </script></body>
 </html>
